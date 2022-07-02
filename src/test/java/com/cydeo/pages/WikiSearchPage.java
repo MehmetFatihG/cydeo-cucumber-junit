@@ -17,4 +17,12 @@ public class WikiSearchPage {
     @FindBy(xpath = "//button[@class='pure-button pure-button-primary-progressive']")
     public WebElement searchButton;
 
+    @FindBy(xpath = "//h1[@id='firstHeading']")
+    public WebElement mainHeader;
+
+    @FindBy(xpath = "//div[@class='fn']")
+    public WebElement imageHeader;
+
+
+
 }

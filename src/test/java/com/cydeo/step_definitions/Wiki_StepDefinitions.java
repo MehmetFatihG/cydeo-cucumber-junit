@@ -25,11 +25,21 @@ public class Wiki_StepDefinitions {
         wikiSearchPage.searchButton.click();
     }
 
-
-
     @Then("User sees {string} is in the wiki title")
     public void userSeesIsInTheWikiTitle(String searchKeyword) {
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertTrue(actualTitle.contains(searchKeyword));
+    }
+
+    @Then("User sees {string} is in the main header")
+    public void userSeesIsInTheMainHeader(String str) {
+        String actualHeader = wikiSearchPage.mainHeader.getText();
+        Assert.assertTrue(actualHeader.contains(str));
+    }
+
+    @Then("User sees {string} is in the image header")
+    public void userSeesIsInTheImageHeader(String string) {
+        String actualImageHeader = wikiSearchPage.imageHeader.getText();
+        Assert.assertTrue(actualImageHeader.contains(string));
     }
 }
