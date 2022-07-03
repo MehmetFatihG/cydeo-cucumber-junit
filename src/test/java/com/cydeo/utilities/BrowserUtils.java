@@ -4,8 +4,11 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class BrowserUtils {
@@ -48,5 +51,15 @@ public class BrowserUtils {
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
+    //it accepts a dropdowns as a web elements and return all the options' text to list of string
+    public static List<String> dropdownsOptionsAsString(WebElement dropdownOptions){
+        Select select = new Select(dropdownOptions);
+        List<WebElement> dropdownsOptionsAsWebElement = select.getOptions();
+        List<String> result = new ArrayList<>();
+        for (WebElement each : dropdownsOptionsAsWebElement) {
+            result.add(each.getText());
+        }
+        return result;
+    }
 
 }

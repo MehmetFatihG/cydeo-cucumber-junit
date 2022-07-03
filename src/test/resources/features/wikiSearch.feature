@@ -27,7 +27,7 @@ Feature: Wikipedia search functionality and verifications
     Then User sees "<expectedMainHeader>" is in the main header
 
     Examples: search values we are going to be using in this scenario is as below
-      | searchValue        | expectedTitle      | expectedMainHeader |
-      | Cristiano Ronaldo | Cristiano Ronaldo | Cristiano Ronaldo |
-      | Bob Marley         | Bob Marley         | Bob Marley         |
-      | Anthony Hopkins    | Anthony Hopkins    | Anthony Hopkins    |
+      | searchValue       | expectedTitle     | expectedMainHeader |
+      | Cristiano Ronaldo | Cristiano Ronaldo | Cristiano Ronaldo  |
+      | Bob Marley        | Bob Marley        | Bob Marley         |
+      | Anthony Hopkins   | Anthony Hopkins   | Anthony Hopkins    |
