@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class WebTableOrderPage extends BasePage {
 
     public WebTableOrderPage(){
@@ -33,8 +35,8 @@ public class WebTableOrderPage extends BasePage {
     @FindBy(xpath = "//input[@name='zip']")
     public WebElement zipCode;
 
-    @FindBy(xpath = "//input[@value='MasterCard']")
-    public WebElement masterCard;
+    @FindBy(name = "card")
+    public List<WebElement> cardType;
 
     @FindBy(xpath = "//input[@name='cardNo']")
     public WebElement cardNo;
@@ -44,9 +46,6 @@ public class WebTableOrderPage extends BasePage {
 
     @FindBy(xpath = "//button[.='Process Order']")
     public WebElement processOrderButton;
-
-    @FindBy(xpath = "(//td)[1]")
-    public WebElement firstRowOrder;
 
 
 }

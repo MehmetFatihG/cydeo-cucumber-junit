@@ -62,4 +62,14 @@ public class BrowserUtils {
         return result;
     }
 
+    //it selects given radio button from the list of radio buttons
+    public static void clickRadioButton(List<WebElement> radioButtonList, String radioButton){
+        for (WebElement each : radioButtonList) {
+            String eachValue = each.getAttribute("value");
+            if (eachValue.equalsIgnoreCase(radioButton)){
+                each.click();
+            }
+        }
+    }
+
 }

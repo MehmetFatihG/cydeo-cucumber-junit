@@ -1,8 +1,10 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.BasePage;
+import com.cydeo.pages.ViewAllOrderPage;
 import com.cydeo.pages.WebTableLoginPage;
 import com.cydeo.pages.WebTableOrderPage;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
 import com.github.javafaker.Faker;
@@ -21,6 +23,7 @@ public class WebTableOrder_StepDefinition {
     WebTableLoginPage webTableLoginPage = new WebTableLoginPage();
     WebTableOrderPage webTableOrderPage = new WebTableOrderPage();
     BasePage basePage = new BasePage();
+    ViewAllOrderPage viewAllOrderPage = new ViewAllOrderPage();
 
     @Given("user is already logged in and on order page")
     public void user_is_already_logged_in_and_on_order_page() {
@@ -36,6 +39,7 @@ public class WebTableOrder_StepDefinition {
     }
     @When("user enters quantity {string}")
     public void userEntersQuantity(String string) {
+        webTableOrderPage.quantityInput.clear();
         webTableOrderPage.quantityInput.sendKeys(string);
     }
     @When("user enters customer name {string}")
@@ -60,8 +64,15 @@ public class WebTableOrder_StepDefinition {
     }
     @When("user selects credit card type {string}")
     public void user_selects_credit_card_type(String string) {
-        webTableOrderPage.masterCard.click();
+        for (WebElement each : webTableOrderPage.cardType) {
+            String eachValue = each.getAttribute("value");
+            if(eachValue.equalsIgnoreCase(string)){
+                each.click();
+                break;
+            }
+        }
     }
+
     @When("user enters credit card number {string}")
     public void user_enters_credit_card_number(String string) {
         webTableOrderPage.cardNo.sendKeys(string);
@@ -76,7 +87,7 @@ public class WebTableOrder_StepDefinition {
     }
     @Then("user should see {string} in first row of the web table")
     public void user_should_see_in_first_row_of_the_web_table(String string) {
-        String actual = webTableOrderPage.firstRowOrder.getText();
+        String actual = viewAllOrderPage.firstRow.getText();
         Assert.assertEquals(string,actual);
     }
 
